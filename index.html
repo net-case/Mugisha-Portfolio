@@ -1,10 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mugisha Imran | Portfolio</title>
+  <meta name="description" content="Portfolio of Mugisha Imran: Cinematic Visual Artist, Photographer, and Creative Director. Explore projects, skills, and contact information." />
+  <meta name="keywords" content="Mugisha Imran, Portfolio, Cinematic Visual Artist, Photographer, Creative Director" />
+  <meta name="author" content="Mugisha Imran" />
   <style>
     body {
       margin: 0;
@@ -28,23 +30,34 @@
       font-weight: normal;
       color: #666;
     }
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #0077cc;
+    }
     .scroll-down {
       position: absolute;
       bottom: 30px;
       animation: bounce 2s infinite;
       font-size: 1.2em;
       color: #555;
+      left: 50%;
+      transform: translateX(-50%);
     }
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0);}
+      40% { transform: translateY(-10px);}
+      60% { transform: translateY(-5px);}
     }
     canvas {
       position: fixed;
@@ -52,23 +65,97 @@
       left: 0;
       z-index: -1;
     }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+      margin-top: -4em;
+    }
+    section {
+      margin-bottom: 2em;
+    }
+    .social-links a {
+      margin-right: 18px;
+      text-decoration: none;
+      color: #555;
+      font-size: 1.7em;
+      vertical-align: middle;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #0077cc;
+    }
+    footer {
+      text-align: center;
+      color: #999;
+      padding: 30px 0 15px 0;
+    }
+    @media (max-width: 700px) {
+      header, main {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+    }
   </style>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <nav aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
   <header>
     <h1>Mugisha Imran</h1>
     <h2>Cinematic Visual Artist | Photographer | Creative Director</h2>
-    <div class="scroll-down">▼ Scroll Down</div>
+    <div class="scroll-down" aria-hidden="true">▼ Scroll Down</div>
   </header>
-
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm Mugisha Imran, a creative professional specializing in cinematic visual arts, photography, and creative direction. I strive to tell captivating stories through my lens, blending artistry and technical skill.</p>
+    </section>
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <ul>
+        <li><strong>Project Name 1:</strong> Brief description of your project and its impact.</li>
+        <li><strong>Project Name 2:</strong> Brief description of your project and its impact.</li>
+        <!-- Add more projects as needed -->
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Feel free to connect with me:</p>
+      <div class="social-links">
+        <a href="https://twitter.com/yourprofile" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:your@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <!-- Add more as needed -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Mugisha Imran. All rights reserved.
+  </footer>
   <script>
-    // Basic 3D background with floating circles using Canvas
+    // Responsive Canvas
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
+    // Animated circles
     const circles = Array.from({ length: 40 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
